@@ -8,7 +8,7 @@
 	```
 
 2. Use Strings carefully
-If two Strings are concatenated using “+” operator in a “for” loop, then it creates a new String Object, every time. This causes wastage of memory and increases performance time. Also, while instantiating a String Object, constructors should be avoided and instantiation should happen directly
+    If two Strings are concatenated using “+” operator in a “for” loop, then it creates a new String Object, every time. This causes wastage of memory and increases performance time. Also, while instantiating a String Object, constructors should be avoided and instantiation should happen directly
 	```
 	//Slower Instantiation
 	String bad = new String("Yet another string object");
@@ -18,7 +18,7 @@ If two Strings are concatenated using “+” operator in a “for” loop, then
 	```
 
 3. Avoid unnecessary Objects
-One of the most expensive operations (in terms of Memory Utilization) in Java is Object Creation. Thus it is recommended that Objects should only be created or initialized if necessary.
+    One of the most expensive operations (in terms of Memory Utilization) in Java is Object Creation. Thus it is recommended that Objects should only be created or initialized if necessary.
 
     ```
     import java.util.ArrayList;
@@ -40,9 +40,9 @@ One of the most expensive operations (in terms of Memory Utilization) in Java is
     ```
 
 4. Dilemma between Array and ArrayList
-Arrays have fixed size but ArrayLists have variable sizes. Since the size of Array is fixed, the memory gets allocated at the time of declaration of Array type variable. Hence, Arrays are very fast. On the other hand, if we are not aware of the size of the data, then ArrayList is More data will lead to ArrayOutOfBoundException and less data will cause wastage of storage space.
-It is much easier to Add or Remove elements from ArrayList than Array
-Array can be multi-dimensional but ArrayList can be only one dimension
+    Arrays have fixed size but ArrayLists have variable sizes. Since the size of Array is fixed, the memory gets allocated at the time of declaration of Array type variable. Hence, Arrays are very fast. On the other hand, if we are not aware of the size of the data, then ArrayList is More data will lead to ArrayOutOfBoundException and less data will cause wastage of storage space.
+    It is much easier to Add or Remove elements from ArrayList than Array
+    Array can be multi-dimensional but ArrayList can be only one dimension
 
 5. Check Oddity
     + Bad:
@@ -69,7 +69,7 @@ Array can be multi-dimensional but ArrayList can be only one dimension
     	}
     }
     ```
-From the code, it would seem return “HaHa” is returned, but it actually returns Ha169. The reason is that if double quotes are used, the characters are treated as a string but in case of single quotes, the char -valued operands ( ‘H’ and ‘a’ ) to int values through a process known as widening primitive conversion. After integer conversion, the numbers are added and return 169.
+    From the code, it would seem return “HaHa” is returned, but it actually returns Ha169. The reason is that if double quotes are used, the characters are treated as a string but in case of single quotes, the char -valued operands ( ‘H’ and ‘a’ ) to int values through a process known as widening primitive conversion. After integer conversion, the numbers are added and return 169.
 
 7. Don't log and throw
     + Bad:
@@ -87,7 +87,7 @@ From the code, it would seem return “HaHa” is returned, but it actually retu
     }
     ```
 
-Clean up with finally
+8. Clean up with finally
     + Bad:
     ```
     //   - Connection is not closed if sendMessage throws.
@@ -108,7 +108,7 @@ Clean up with finally
     }
     ```
 
-8. String Concatenations
+9. String Concatenations
     + Bad:
     ```
     if (result != null && (!result.isEmpty())) {
@@ -144,7 +144,7 @@ Clean up with finally
     }
     ```
 
-9. Loops (Style code)
+10. Loops (Style code)
     + Bad:
     ```
     for(SomeClass someVar:someVars){
@@ -167,8 +167,8 @@ Clean up with finally
       someVar.doSomething();
     ```
 
-10. Use TypedQuery instead of Query
-TypedQuery is just faster, and you don't need to cast.
+11. Use TypedQuery instead of Query
+    TypedQuery is just faster, and you don't need to cast.
 
     + Bad:
     ```
@@ -184,7 +184,7 @@ TypedQuery is just faster, and you don't need to cast.
     List<Type> types = q.getResultList();
     ```
 
-11. Use fluent interface in queries (Chain Method)
+12. Use fluent interface in queries (Chain Method)
 
     + Good:
     ```
@@ -204,13 +204,13 @@ TypedQuery is just faster, and you don't need to cast.
         .getResultList();
     ```
 
-12. Use FetchType.LAZY on relations
+13. Use FetchType.LAZY on relations
 
-Sometimes you need to relate two entities, and when you use annotations like @ManyToOne and @OneToOne the default property is FetchType.EAGER.
+    Sometimes you need to relate two entities, and when you use annotations like @ManyToOne and @OneToOne the default property is FetchType.EAGER.
 
-EAGER collections are fetched fully at the time their parent is fetched. Even if you don't need them
-LAZY on the other hand, means that the collection is fetched only when you try to access them (It's LAZY hum?)
-There's a HUGE slow down performance when you use EAGER. Only use if you have a good reason to do.
+    EAGER collections are fetched fully at the time their parent is fetched. Even if you don't need them
+    LAZY on the other hand, means that the collection is fetched only when you try to access them (It's LAZY hum?)
+    There's a HUGE slow down performance when you use EAGER. Only use if you have a good reason to do.
 
     ```
     @ManyToOne(fetch = FetchType.LAZY)
